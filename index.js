@@ -121,14 +121,12 @@ client.on('ready', async () => {
 		console.error(error);
 		if (interaction.replied || interaction.deferred) {
 			await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
-		} else {
+		} 
+    else {
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
 	}
   });
-  
-  //Adding the command
-  await client.applicationCommands.set([cmdListPP]);
 
 });
 
