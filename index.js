@@ -82,6 +82,15 @@ client.on('ready', async () => {
   //Closing the list
   listProductsPrices = '```';
 
+  //Enabling the command
+  async function execute(interaction) {
+    //Send a new message showing the list
+    await interaction.followUp(listProductsPrices);
+  }
+
+  //Adding the command
+  await client.applicationCommands.set([cmdListPP]);
+
 });
 
 //Make the bot connect
