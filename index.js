@@ -2,7 +2,7 @@
     Author : ML
     Date of creation : 24/02/2024
     Date of last modification : 24/02/2024
-    Version : v0.1
+    Version : v0.3
     Comments : Created with the help of Google Gemini and the discord.js documentation
 */
 
@@ -78,6 +78,41 @@ client.on('ready', async () => {
       }
     }
   });
+
+  function checkPrice() {
+    request(productUrl, (error, response, body) => {
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      // Extraction du prix du produit de la page HTML
+        const price = parseFloat(body.match(/\$([\d,.]+)\s/)[1]);
+
+      // Si le prix a baissé, alors envoyer un message dans le canal Discord
+      if (price < initialPrice) {
+        //Embedded message
+        const alerteMessage = {
+            color: 0x0099ff,
+            title: "Baisse d'un produit !",
+            url: `https://www.amazon.fr/dp/${productsID}`,
+            description: `Le prix de la/du ${product} a baissé de ${initialPrice} € à ${price} €`,
+            image: {
+                url: `${imgProduct}`,
+            },
+        };
+
+        channelId.send({ embeds: [alerteMessage] });
+      }
+    });
+  }
+
+  // Vérifiez le prix du produit tous les jours
+  setInterval(() => {
+    for (product in products) {
+      checkPrice(product);
+    }
+  }, 86400000);
 
 });
 
