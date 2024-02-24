@@ -8,7 +8,7 @@
 
 //Importing the class
 const { SlashCommandBuilder } = require('discord.js');
-const list_products_prices = require('./list_products_prices.js');
+const buildProductList = require('../../list_products_prices.js');
 
 module.exports = {
 //Creating the slash command that lists each product and their price
@@ -18,6 +18,8 @@ module.exports = {
     //Enabling the command
     async execute(interaction) {
         //Send a new message showing the list
-        await interaction.followUp(list_products_prices);
+        await interaction.deferReply();
+        const productList = buildProductList();
+        await interaction.editReply(productList); // Send the reply with the list
     }
 }

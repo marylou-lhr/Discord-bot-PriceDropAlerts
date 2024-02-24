@@ -11,6 +11,7 @@ const Discord = require('discord.js');
 const request = require('request');
 const fs = require('node:fs');
 const path = require('node:path');
+const productsFile = require('./products.js');
 const { Client, Collection, EmbedBuilder, Events, GatewayIntentBits} = require('discord.js');
 const { token } = require('./config.json');
 const client = new Discord.Client({
@@ -56,10 +57,10 @@ client.on('ready', async () => {
     if (!interaction.isChatInputCommand()) return;
     console.log(interaction);
 
-    const command = interaction.client.commands.get(interaction.cmdListPP);
+    const command = interaction.client.commands.get(interaction.commandName);
 
     if (!command) {
-      console.error(`No command matching ${interaction.cmdListPP} was found.`);
+      console.error(`No command matching ${interaction.commandName} was found.`);
       return;
     }
 
