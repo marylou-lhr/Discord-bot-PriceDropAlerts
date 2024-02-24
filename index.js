@@ -18,3 +18,13 @@ const client = new Discord.Client({
         Discord.GatewayIntentBits.MessageContent,
     ],
 });
+
+//If the bot is good to go
+client.on('ready', async () => {
+//Send 'Ready' to confirm
+  console.log('Ready');
+
+});
+
+//Make the bot connect
+client.login(token);
