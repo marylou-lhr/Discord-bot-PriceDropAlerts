@@ -10,6 +10,7 @@
 const Discord = require('discord.js');
 const { Client, EmbedBuilder, SlashCommandBuilder, GatewayIntentBits } = require('discord.js');
 const request = require('request');
+const { token } = require('./config.json');
 const client = new Discord.Client({
     intents: [ //Necessary intents for the bot to work
         Discord.GatewayIntentBits.Guilds,
