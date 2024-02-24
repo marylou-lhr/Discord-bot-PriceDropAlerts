@@ -11,7 +11,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 //Creating the slash command that lists each product and their price
-    data: new SlashCommandBuilder()
+    data: cmdListPP = new SlashCommandBuilder()
         .setName('list_products_prices')
         .setDescription('Show the list of the monitored products and their price'),
     //Enabling the command
