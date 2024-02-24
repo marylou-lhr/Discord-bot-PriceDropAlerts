@@ -94,36 +94,26 @@ client.on('ready', async () => {
     if (!interaction.isChatInputCommand()) return;
     console.log(interaction);
 
-	const command = interaction.client.commands.get(interaction.cmdListPP);
-  //Creating the message which will send the list
-  //Sending the list in a code-block style
-  list_products_prices = '```\n';
+    const command = interaction.client.commands.get(interaction.cmdListPP);
 
-  //Show a product & its price at a time
-  for (let i=0 ; i < products.length ; i++) {
-    list_products_prices += `${products[i]}: ${initialPrices[i]}\n`;
-  }
-  //Closing the list
-  list_products_prices = '```';
+    if (!command) {
+      console.error(`No command matching ${interaction.cmdListPP} was found.`);
+      return;
+    }
 
-	if (!command) {
-		console.error(`No command matching ${interaction.cmdListPP} was found.`);
-		return;
-	}
-
-  //Trying the command to see if it works when an user wants to execute it
-	try {
-		await command.execute(interaction);
-	} 
-  catch (error) {
-		console.error(error);
-		if (interaction.replied || interaction.deferred) {
-			await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
-		} 
-    else {
-			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-		}
-	}
+    //Trying the command to see if it works when an user wants to execute it
+    try {
+      await command.execute(interaction);
+    } 
+    catch (error) {
+      console.error(error);
+      if (interaction.replied || interaction.deferred) {
+        await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
+      } 
+      else {
+        await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+      }
+    }
   });
 
 });
