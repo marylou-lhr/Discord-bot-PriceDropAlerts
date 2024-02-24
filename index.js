@@ -8,7 +8,7 @@
 
 //Importing necessary discord.js classes for my bot
 const Discord = require('discord.js');
-const { Client, EmbedBuilder, SlashCommandBuilder, GatewayIntentBits } = require('discord.js');
+const { Client, EmbedBuilder, GatewayIntentBits } = require('discord.js');
 const request = require('request');
 const { token } = require('./config.json');
 const client = new Discord.Client({
@@ -67,26 +67,15 @@ client.on('ready', async () => {
     'keyboard': 119
   };
 
-  //Creating the slash command that lists each product and their price
-  const cmdListPP = new SlashCommandBuilder()
-    .setName('listProductsPrices')
-    .setDescription('Show the list of the monitored products and their price')
-
   //Creating the message which will send the list
   //Sending the list in a code-block style
-  listProductsPrices = '```\n';
+  list_products_prices = '```\n';
   //Show a product & its price at a time
   for (let i=0 ; i < products.length ; i++) {
-    listProductsPrices += `${products[i]}: ${initialPrices[i]}\n`;
+    list_products_prices += `${products[i]}: ${initialPrices[i]}\n`;
   }
   //Closing the list
-  listProductsPrices = '```';
-
-  //Enabling the command
-  async function execute(interaction) {
-    //Send a new message showing the list
-    await interaction.followUp(listProductsPrices);
-  }
+  list_products_prices = '```';
 
   //Adding the command
   await client.applicationCommands.set([cmdListPP]);
