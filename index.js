@@ -67,6 +67,11 @@ client.on('ready', async () => {
     'keyboard': 119
   };
 
+  //Creating the slash command that lists each product and their price
+  const cmdListPP = new SlashCommandBuilder()
+    .setName('listProductsPrices')
+    .setDescription('Show the list of the monitored products and their price')
+
 });
 
 //Make the bot connect
