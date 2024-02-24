@@ -8,11 +8,10 @@
 
 //Importing necessary discord.js classes for my bot
 const Discord = require('discord.js');
-const { Client, EmbedBuilder, GatewayIntentBits } = require('discord.js');
 const request = require('request');
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, EmbedBuilder, Events, GatewayIntentBits} = require('discord.js');
 const { token } = require('./config.json');
 const client = new Discord.Client({
     intents: [ //Necessary intents for the bot to work
