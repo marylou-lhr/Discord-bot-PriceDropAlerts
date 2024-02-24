@@ -72,6 +72,16 @@ client.on('ready', async () => {
     .setName('listProductsPrices')
     .setDescription('Show the list of the monitored products and their price')
 
+  //Creating the message which will send the list
+  //Sending the list in a code-block style
+  listProductsPrices = '```\n';
+  //Show a product & its price at a time
+  for (let i=0 ; i < products.length ; i++) {
+    listProductsPrices += `${products[i]}: ${initialPrices[i]}\n`;
+  }
+  //Closing the list
+  listProductsPrices = '```';
+
 });
 
 //Make the bot connect
