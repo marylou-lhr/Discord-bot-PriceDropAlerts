@@ -8,7 +8,7 @@
 
 //Importing the class
 const { SlashCommandBuilder } = require('discord.js');
-const list_products_prices = require('list_products_prices.js');
+const list_products_prices = require('./list_products_prices.js');
 
 module.exports = {
 //Creating the slash command that lists each product and their price
