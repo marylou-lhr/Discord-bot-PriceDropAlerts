@@ -90,26 +90,15 @@ client.on('ready', async () => {
     'keyboard': 119
   };
 
-  //Creating the message which will send the list
-  //Sending the list in a code-block style
-  list_products_prices = '```\n';
-  //Show a product & its price at a time
-  for (let i=0 ; i < products.length ; i++) {
-    list_products_prices += `${products[i]}: ${initialPrices[i]}\n`;
-  }
-  //Closing the list
-  list_products_prices = '```';
-
   //Making sure that the user did input a slash command
   client.on(Events.InteractionCreate, async interaction => {
     if (!interaction.isChatInputCommand()) return;
     console.log(interaction);
 
-    
-	const command = interaction.client.commands.get(interaction.commandName);
+	const command = interaction.client.commands.get(interaction.cmdListPP);
 
 	if (!command) {
-		console.error(`No command matching ${interaction.commandName} was found.`);
+		console.error(`No command matching ${interaction.cmdListPP} was found.`);
 		return;
 	}
 

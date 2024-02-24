@@ -9,6 +9,17 @@
 //Importing the class
 const { SlashCommandBuilder } = require('discord.js');
 
+//Creating the message which will send the list
+//Sending the list in a code-block style
+list_products_prices = '```\n';
+
+//Show a product & its price at a time
+for (let i=0 ; i < products.length ; i++) {
+    list_products_prices += `${products[i]}: ${initialPrices[i]}\n`;
+}
+//Closing the list
+list_products_prices = '```';
+
 module.exports = {
 //Creating the slash command that lists each product and their price
     data: new SlashCommandBuilder()
