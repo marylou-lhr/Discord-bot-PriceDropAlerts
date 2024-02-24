@@ -10,7 +10,7 @@
 const Discord = require('discord.js');
 const { Client, EmbedBuilder, SlashCommandBuilder, GatewayIntentBits } = require('discord.js');
 const request = require('request');
-const { token, channelId } = require('./config.json');
+const { token } = require('./config.json');
 const client = new Discord.Client({
     intents: [ //Necessary intents for the bot to work
         Discord.GatewayIntentBits.Guilds,
@@ -23,6 +23,9 @@ const client = new Discord.Client({
 client.on('ready', async () => {
 //Send 'Ready' to confirm
   console.log('Ready');
+
+  //ID of the channel the embedded message will be sent in
+  const channelId = '1210709927962742803';
 
   // Amazon URL of the products I want the bot to keep an eye on
   //Note to self : Delete this line when I will know that it works
