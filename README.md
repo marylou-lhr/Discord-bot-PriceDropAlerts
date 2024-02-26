@@ -6,4 +6,5 @@ About my bot
 
 Please note :
   It's my first time making a bot and using git outside of my git introduction class, so I apologize for my number of "useless" commits.
+  It was also an opportunity for me to learn JavaScript!
   This bot is for personal use only, but I might make it public if I can give it useful features (and if its main feature works).
